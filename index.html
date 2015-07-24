@@ -54,6 +54,8 @@
     /*  Custom CSS to make the presentation pretty. */
     body { font-family: monospace; font-size: 3em; }
     img { max-width: 100%; max-height: 500px; }
+    #counter, #navigation { display: none; }
+    code { font-size: .8em; }
   </style>
   
   <!-- jQuery (required for slides to work) -->
@@ -360,6 +362,10 @@
                  
     }); 
   </script>
+  
+  <link rel="stylesheet" href="styles/solarized_light.css">
+  <script src="highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -409,7 +415,7 @@
   </div>
     
   <div>
-    <img src="jenn.png" />
+    <img src="assets/jenn.png" />
   </div>
   
   <div>
@@ -425,6 +431,11 @@
   <div>
     <img src="assets/bocoup-8bit.png" />
     <p>make8bitart.com</p>
+  </div> 
+  
+  <div>
+    <img src="assets/bocoup-vart.png" />
+    <p>vart.institute</p>
   </div>
   
   <div>
@@ -456,7 +467,7 @@
   </div>
   
   <div>
-    <pre><code>var coolArray = ["cool", true, 732];</code></pre>
+    <pre><code>var coolArray = ["cool", true, 1335];</code></pre>
   </div>
   
   <div>
@@ -560,15 +571,26 @@
   </div>
   
   <div>
-    <code>Array</code>
+    <h2>Array</h2>
   </div>
   
   <div>
-    <pre><code>new Array(element0, element1[, ...[, elementN]]);</code></pre>
+    <pre><code>// new Array(element0, element1[, ...[, elementN]]);
+      
+var coolArray = new Array(1,2,3);</code></pre>
   </div>
   
   <div>
-    <pre><code>new Array(arrayLength);</code></pre>
+    <pre><code>// new Array(arrayLength);
+var coolArray = new Array(3);</code></pre>
+  </div>
+  
+  <div>
+    <h2>"sparse arrays"</h2>
+  </div>
+    
+  <div>
+    <h2>GHOST ARRAYS</h2>
   </div>
   
   <div>
@@ -599,11 +621,6 @@ var fineArray = ['alex'];</code></pre>
     <pre><code>var getsTheJobDoneArray = coolArray.concat(fineArray);
       
 // ['jenn','alex']</code></pre>
-  </div>
-  
-  <div>
-    <h2>accessor methods</h2>
-    <pre><code>var msg = getsTheJobDoneArray.join(' is on the fence about ');</code></pre>
   </div>
   
   <div>
@@ -645,9 +662,8 @@ var fineArray = ['alex'];</code></pre>
     wow #rude
   </div>
 
-  <div>
-    close the pay gap
-  </div>
+  <div style="font-size: 2em;">
+    🎶 somebody once told me the world is gonna roll me i ain't the sharpest tool in the shed 🎶  </div>
   
   <div>
     <h2>proposed accessor methods;</h2>
@@ -677,62 +693,6 @@ var fineArray = ['alex'];</code></pre>
     <h2>iteration methods;</h2>
     <ul>
       <li>forEach</li>
-    </ul>
-  </div> 
-   
-  <div>
-    <h2>iteration methods;</h2>
-    <ul>
-      <li>forEach</li>
-      <li>every</li>
-    </ul>
-  </div>  
-  
-  <div>
-    <h2>iteration methods;</h2>
-    <ul>
-      <li>forEach</li>
-      <li>every</li>
-      <li>some</li>
-    </ul>
-  </div>  
-  
-  <div>
-    <h2>iteration methods;</h2>
-    <ul>
-      <li>forEach</li>
-      <li>every</li>
-      <li>some</li>
-      <li>filter</li> 
-    </ul>
-  </div>  
-  
-  <div>
-    <h2>iteration methods;</h2>
-    <ul>
-      <li>forEach</li>
-      <li>every</li>
-      <li>some</li>
-      <li>filter</li>
-      <li>map</li>
-    </ul>
-  </div>  
-  <div>
-    <h2>iteration methods;</h2>
-    <ul>
-      <li>forEach</li>
-      <li>every</li>
-      <li>some</li>
-      <li>filter</li>
-      <li>map</li>
-      <li>reduce</li>
-    </ul>
-  </div>  
-  
-  <div>
-    <h2>iteration methods;</h2>
-    <ul>
-      <li>forEach</li>
       <li>every</li>
       <li>some</li>
       <li>filter</li>
@@ -740,6 +700,78 @@ var fineArray = ['alex'];</code></pre>
       <li>reduce</li>
       <li>reduceRight</li>  
     </ul>
+  </div>
+  
+  <div>
+    <h2>iteration methods</h2>
+    <pre><code>var coolArray = ['jenn','alex','css','opinions'];</code></pre>
+  </div>
+  
+  <div>
+    <h2>iteration methods</h2>
+    <pre><code>coolArray.forEach(function(el,i,arr){
+  console.log(el);
+});
+
+// "jenn"
+// "alex"
+// "css"
+// "opinions"</code></pre>
+  </div>
+  
+  <div>
+    <h2>iteration methods</h2>
+    <pre><code>var isCool = function(el, i, arr){
+  return el !== 'microaggressions';
+};
+      
+coolArray.every(isCool);
+
+// true</code></pre>
+  </div>
+  
+  <div>
+    <h2>iteration methods</h2>
+    <pre><code>var isJenn = function(el, i, arr){
+  return el === 'jenn';
+};
+      
+var literallyCoolArray = coolArray.filter(isJenn);
+
+// ['jenn']</code></pre>
+  </div>
+  
+  <div>
+    <h2>iteration methods</h2>
+    <pre><code>var makeCool = function(el, i, arr){
+  return el + ': cool';
+};
+      
+var anotherCoolArray = coolArray.map(makeCool);
+
+// ['jenn: cool', 'alex: cool', 'css: cool', 'opinions: cool']</code></pre>
+  </div>
+  
+  <div>
+    <h2>iteration methods</h2>
+    <pre><code>var makeACoolStatement = function(prev, curr, i, arr){
+  return prev + ' is cool, ' + curr;
+};
+      
+var aCoolStatement= coolArray.reduce(makeACoolStatement);
+
+// "jenn is cool, alex is cool, css is cool, opinions"</code></pre>
+  </div>
+  
+  <div>
+    <h2>iteration methods</h2>
+    <pre><code>var makeACoolStatement = function(prev, curr, i, arr){
+  return prev + ' is ok, ' + curr;
+};
+      
+var aCoolStatement= coolArray.reduceRight(makeACoolStatement);
+
+// "opinions is ok, css is ok, alex is ok, jenn"</code></pre>
   </div>
   
   <div>
@@ -974,6 +1006,10 @@ myArray.sort( function(a,b){return a - b} );
   
   <div>
     <blockquote>"The elements of this array are sorted. The sort is not necessarily stable (that is, elements that compare equal do not necessarily remain in their original order). If comparefn is not undefined, it should be a function that accepts two arguments x and y and returns a negative value if x < y, zero if x = y, or a positive value if x > y;"</blockquote>
+  </div>
+  
+    <div>
+    <blockquote>"The elements of this array are sorted. The sort is not necessarily stable (that is, elements that compare equal do not necessarily remain in their original order). If comparefn is not undefined, it should be a function that accepts two arguments x and y and returns a negative value if x < y, zero if x = y, or a positive value if x > y;"</blockquote>
     <cite>http://www.ecma-international.org/ecma-262/5.1/</cite>
   </div>
   
@@ -1106,7 +1142,13 @@ unitedAirlinesSort( [5, 4, 3, 2, 1] );
   
   <div>
     <h2>SameValueZero</h2>
-    <blockquote>"Using Abstract Equality Comparison would be bonkers; of course." - https://github.com/tc39/Array.prototype.includes</blockquote>
+    <blockquote>"Using Abstract Equality Comparison would be bonkers; of course."</blockquote>
+  </div>
+  
+  <div>
+    <h2>SameValueZero</h2>
+    <blockquote>"Using Abstract Equality Comparison would be bonkers; of course."</blockquote>
+    -  ihttps://github.com/tc39/Array.prototype.includes
   </div>
   
   <div>
